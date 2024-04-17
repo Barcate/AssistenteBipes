@@ -1,0 +1,74 @@
+html, body {
+  margin: 0;
+  height: 100%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+  align-items: stretch;
+}
+
+.left, .right {
+  width: 50%; 
+}
+
+.left {
+  background-color: #d55413; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 5em; 
+}
+
+.right {
+  background: #f0f0f0;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 20px;
+  overflow-y: auto;
+}
+.assistant-container {
+  position: relative;
+  display: inline-block;
+  width: 50px; /* ou o tamanho desejado para o ícone pequeno */
+  cursor: pointer;
+  margin-top: 500px;
+  margin-left: 100px;
+}
+
+.assistant-icon {
+  display: block;
+  width: 100%; /* para ser responsivo ao container */
+}
+
+.chat-bubble {
+  position: absolute;
+  top: -50%; /* Centraliza verticalmente em relação ao assistente */
+  left: 200%; /* Posiciona o balão à direita do assistente */
+  transform: translateY(-50%); /* Ajuste fino da posição vertical */
+  min-width: 200px;
+  padding: 10px;
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 10px;
+  text-align: center;
+  font-family: 'Comic Sans MS', 'Comic Neue', cursive; /* ou outra fonte estilo HQ */
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+  z-index: 100; /* Garante que o balão fique sobre outros elementos */
+  padding-bottom: 50px;
+}
+
+.chat-bubble:before {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: -20px; 
+  border-width: 10px;
+  border-style: solid;
+  border-color: transparent rgb(0, 0, 0) transparent transparent;
+  transform: translateX(-20%) translateY(-50%) rotate(200deg);
+}

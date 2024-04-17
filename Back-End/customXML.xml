@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xml xmlns="https://bipes.net.br">
+  <workspace>
+    <field name="DEVICE">ESP32C3basic</field>
+    <field name="TIMESTAMP">1712939555052</field>
+    <freeboard/>
+    <databoard/>
+  </workspace>
+  <block type="project_metadata" id="!nhVF}1T~ZHMWrJ.9{9g" deletable="false" x="-212" y="-612">
+    <value name="project_author">
+      <shadow type="text" id="[LN5k5(s{lmLEuf!`yI:">
+        <field name="TEXT">Name</field>
+      </shadow>
+    </value>
+    <value name="project_iot_id">
+      <shadow type="math_number" id="v3lIBo4gE}JT;Q@OqRGN">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+    <value name="project_description">
+      <shadow type="text" id="Bn,+{dYCsxlXPX)RFE/5">
+        <field name="TEXT">Meu projeto</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="inicio" id="inicio" deletable="false" x="-212" y="-450">
+    <next>
+      <block type="fim" id="fim" deletable="false"/>
+    </next>
+  </block>
+</xml>
