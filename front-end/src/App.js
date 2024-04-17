@@ -3,8 +3,9 @@ import './App.css';
 import logo from './logo.jpg';
 import assistantImage1 from './teste1.png';
 import assistantImage2 from './teste2.png';
-
+import BlocklyComponent from './components/BlocklyComponent';
 function App() {
+  
   const [chatVisible, setChatVisible] = useState(false);
   const [assistantImage, setAssistantImage] = useState(assistantImage1);
   const [isSpeaking, setIsSpeaking] = useState(false);
@@ -97,6 +98,9 @@ function App() {
     <div className="container">
       <section className="left">
         <img src={logo} alt="Logo" />
+        <div className="App">
+          <BlocklyComponent />
+        </div>
       </section>
       <section className="right">
         <div className='assistant-container' onClick={handleAssistantClick}>

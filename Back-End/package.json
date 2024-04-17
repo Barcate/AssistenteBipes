@@ -14,6 +14,7 @@
     "express": "^4.19.2",
     "node": "^18.20.2",
     "openai": "^4.33.0",
-    "xmlbuilder": "^15.1.1"
+    "xmlbuilder": "^15.1.1",
+    "blockly": "^10.4.3"
   }
 }
