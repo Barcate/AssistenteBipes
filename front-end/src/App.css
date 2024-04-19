@@ -26,49 +26,52 @@ html, body {
 .right {
   background: #f0f0f0;
   display: flex;
-  justify-content: center;
   flex-direction: column;
+  align-items: center; /* Alinhar assistentes no centro */
   padding: 20px;
   overflow-y: auto;
 }
+
 .assistant-container {
   position: relative;
-  display: inline-block;
-  width: 50px; /* ou o tamanho desejado para o ícone pequeno */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%; /* Ajuste para ocupar a largura total */
   cursor: pointer;
-  margin-top: 500px;
-  margin-left: 100px;
+  margin-top: 20px; /* Espaço entre os assistentes */
 }
 
 .assistant-icon {
-  display: block;
-  width: 100%; /* para ser responsivo ao container */
+  width: 80px; /* Tamanho fixo para o ícone */
+  height: auto; /* Altura automática baseada na largura */
 }
 
 .chat-bubble {
   position: absolute;
-  top: -50%; /* Centraliza verticalmente em relação ao assistente */
-  left: 200%; /* Posiciona o balão à direita do assistente */
-  transform: translateY(-50%); /* Ajuste fino da posição vertical */
-  min-width: 200px;
+  top: 100%; /* Posicionado logo abaixo do ícone */
+  left: 50%; /* Centralizar o balão horizontalmente em relação ao ícone */
+  transform: translate(-50%, 20px); /* Ajuste para centralizar e mover abaixo do ícone */
+  min-width: 300px; /* Largura mínima para o balão */
   padding: 10px;
   background-color: white;
   border: 2px solid black;
   border-radius: 10px;
   text-align: center;
-  font-family: 'Comic Sans MS', 'Comic Neue', cursive; /* ou outra fonte estilo HQ */
+  font-family: 'Comic Sans MS', 'Comic Neue', cursive;
   box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
-  z-index: 100; /* Garante que o balão fique sobre outros elementos */
-  padding-bottom: 50px;
+  z-index: 100;
+  overflow-y: scroll;
+  max-height: 400px;
 }
 
 .chat-bubble:before {
   content: '';
   position: absolute;
-  top: 100%;
-  left: -20px; 
+  top: 0;
+  left: 50%;
   border-width: 10px;
   border-style: solid;
-  border-color: transparent rgb(0, 0, 0) transparent transparent;
-  transform: translateX(-20%) translateY(-50%) rotate(200deg);
+  border-color: black transparent transparent transparent;
+  transform: translateX(-50%) translateY(-100%); /* Ajustar para que a seta apareça no topo do balão */
 }
