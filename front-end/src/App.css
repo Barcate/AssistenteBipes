@@ -46,6 +46,11 @@ html, body {
   width: 80px; /* Tamanho fixo para o ícone */
   height: auto; /* Altura automática baseada na largura */
 }
+.assistant-icon2 {
+  width: 150px; /* Tamanho fixo para o ícone */
+  height: auto; /* Altura automática baseada na largura */
+}
+
 
 .chat-bubble {
   position: absolute;

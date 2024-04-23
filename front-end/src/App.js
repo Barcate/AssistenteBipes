@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import assistantImage1 from './teste1.png';
+import assistantImage3 from './teste3.png';
 // import assistantImage2 from './teste2.png';
 import BlocklyComponent from './components/BlocklyComponent';
+import axios from 'axios';
 
 function App() {
   const [chatVisible, setChatVisible] = useState(false);
@@ -12,19 +14,14 @@ function App() {
   const [mediaRecorder, setMediaRecorder] = useState(null);
   const [isRecording, setIsRecording] = useState(false);
   const [chatVisible2, setChatVisible2] = useState(false);
-  const [assistantImage2, setAssistantImage2] = useState(assistantImage1); // Updated for clarity
+  const [assistantImage2, setAssistantImage2] = useState(assistantImage3); // Updated for clarity
   const [chatMessages2, setChatMessages2] = useState([]);
   const [textMessage2, setTextMessage2] = useState('');
   const [mediaRecorder2, setMediaRecorder2] = useState(null);
   const [isRecording2, setIsRecording2] = useState(false);
 
-  const toggleImage = () => {
-    setAssistantImage(prevImage => prevImage === assistantImage1 ? assistantImage2 : assistantImage1);
-  };
-
   const speak = () => {
     const msg = new SpeechSynthesisUtterance('Eu sou o assistente virtual Bipes, o que você precisa?');
-    window.speechSynthesis.speak(msg);
   };
 
   useEffect(() => {
@@ -37,8 +34,6 @@ function App() {
     let intervalId;
     if (chatVisible && !isRecording) {
       speak();
-      intervalId = setInterval(toggleImage, 500);
-      setTimeout(() => clearInterval(intervalId), 5000);
     }
     return () => clearInterval(intervalId);
   }, [chatVisible, isRecording]);
@@ -47,15 +42,42 @@ function App() {
     setChatVisibleFunc(!isVisible);
     if (!isVisible) {
       speak();
-      const intervalId = setInterval(() => setImageFunc(prevImage => prevImage === assistantImage1 ? assistantImage2 : assistantImage1), 500);
-      setTimeout(() => clearInterval(intervalId), 5000);
     }
   };
 
-  const handleTextSubmit = (event, setTextMessageFunc, setChatMessagesFunc, textMessageVar, chatMessagesVar) => {
+  const sendToServer = async (data) => {
+    try {
+      let formData = new FormData();
+      if (data.messageType === 'audio') {
+        // Assumindo que 'data.messageContent' é um Blob de áudio
+        formData.append('audio', data.messageContent, 'message.mp3');
+        // Adicionar áudio ao chat antes de enviar
+        const url = URL.createObjectURL(data.messageContent);
+        setChatMessages(prevMessages => [...prevMessages, { type: 'audio', content: url, sent: true }]);
+      } else {
+        formData.append('messageContent', data.messageContent);
+        // Adicionar texto ao chat antes de enviar
+        setChatMessages(prevMessages => [...prevMessages, { type: 'text', content: data.messageContent, sent: true }]);
+      }
+  
+      const response = await axios.post('http://localhost:5000/message', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data' // Isso é automático quando você usa FormData
+        },
+        responseType: 'blob' // Handling audio response
+      });
+  
+      const url = URL.createObjectURL(response.data);
+      setChatMessages(prevMessages => [...prevMessages, { type: 'audio', content: url }]);
+    } catch (error) {
+      console.error('Error sending/receiving data from server:', error);
+    }
+  };
+
+  const handleTextSubmit = (event, setTextMessageFunc, setChatMessagesFunc, textMessageVar) => {
     event.preventDefault();
     if (textMessageVar.trim()) {
-      setChatMessagesFunc([...chatMessagesVar, { type: 'text', content: textMessageVar }]);
+      sendToServer({ messageType: 'text', messageContent: textMessageVar });
       setTextMessageFunc('');
     }
   };
@@ -76,6 +98,8 @@ function App() {
       recorder.onstop = () => {
         const audioBlob = new Blob(audioChunks);
         const audioUrl = URL.createObjectURL(audioBlob);
+        sendToServer({ messageType: 'audio', messageContent: audioBlob });
+        setIsRecording(false);
         setChatMessagesFunc([...chatMessagesVar, { type: 'audio', content: audioUrl }]);
       };
     } catch (error) {
@@ -131,7 +155,7 @@ function App() {
           )}
         </div>
         <div className='assistant-container' onClick={() => handleAssistantClick(setChatVisible2, setAssistantImage2, chatVisible2)}>
-          <img src={assistantImage2} alt="Assistant Icon" className='assistant-icon' />
+          <img src={assistantImage2} alt="Assistant Icon" className='assistant-icon2' />
           {chatVisible2 && (
             <div className="chat-bubble" onClick={(e) => e.stopPropagation()}>
               <div className="messages">

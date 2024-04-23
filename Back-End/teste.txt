@@ -3,10 +3,7 @@ import multer from "multer";
 import OpenAI from "openai";
 import dotenv from 'dotenv';
 import cors from 'cors';
-import fs from 'fs';
-import { promisify } from 'util';
-import { tmpdir } from 'os';
-import { join } from 'path';
+import path from 'path';
 
 dotenv.config();
 
@@ -14,18 +11,18 @@ const app = express();
 const upload = multer({ storage: multer.memoryStorage() });
 
 app.use(express.json());
-app.use(cors({
-  origin: 'http://localhost:3000',
-  methods: ['GET', 'POST'],
-  allowedHeaders: ['Content-Type', 'Authorization']
-}));
+// app.use(express.static(path.join(__dirname, 'build'))); // Se você ainda precisa servir arquivos estáticos
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
-const writeFileAsync = promisify(fs.writeFile);
-const unlinkAsync = promisify(fs.unlink);
+// Configuração CORS específica para aceitar requisições de localhost:3000
+app.use(cors({
+  origin: 'http://localhost:3000',
+  methods: ['GET', 'POST'],  // Métodos que você deseja permitir
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
 
 async function convertTextToSpeech(text) {
   try {
@@ -36,49 +33,30 @@ async function convertTextToSpeech(text) {
     });
     return Buffer.from(await response.arrayBuffer());
   } catch (error) {
-    console.error("Error converting text to speech:", error);
+    console.error("Erro na conversão de texto para áudio:", error);
     throw error;
   }
 }
 
 async function convertAudioToText(audioBuffer) {
   try {
-    const tempFilePath = join(tmpdir(), 'upload.wav');
-    await writeFileAsync(tempFilePath, audioBuffer);
-
     const response = await openai.audio.transcriptions.create({
-      file: fs.createReadStream(tempFilePath),
+      buffer: audioBuffer,
       model: "whisper-1",
     });
-
-    await unlinkAsync(tempFilePath); // Clean up the temp file
-
-    if (!response.text || response.text.trim() === '') {
-      throw new Error("Audio not clear enough");
-    }
-    return response.text.trim();
+    if (!response.text) throw new Error("Failed to convert audio to text.");
+    return response.text.trim(); // Certifique-se de limpar e verificar o texto
   } catch (error) {
-    console.error("Error converting audio to text:", error);
+    console.error("Erro na conversão de áudio para texto:", error);
     throw error;
   }
 }
 
 app.post('/message', upload.single('audio'), async (req, res) => {
   try {
-    let textToProcess;
+    let textToProcess = req.body.messageContent || (req.file && await convertAudioToText(req.file.buffer));
 
-    if (req.file) {
-      try {
-        textToProcess = await convertAudioToText(req.file.buffer);
-      } catch (error) {
-        console.log('Audio transcription failed:', error);
-        const apologyAudio = await convertTextToSpeech("Por favor, seja mais claro.");
-        res.set('Content-Type', 'audio/mpeg');
-        return res.send(apologyAudio);
-      }
-    } else if (req.body.messageContent) {
-      textToProcess = req.body.messageContent;
-    } else {
+    if (!textToProcess) {
       return res.status(400).send("No text or audio message received");
     }
 
@@ -92,12 +70,16 @@ app.post('/message', upload.single('audio'), async (req, res) => {
 
     res.set('Content-Type', 'audio/mpeg');
     res.send(audioResponse);
-    console.log("Transcribed text: " + textToProcess); // Log the transcribed text for debugging
   } catch (error) {
     console.error("Error calling AI:", error);
     res.status(500).send(error.message);
   }
 });
+
+// // Rota para servir o index.html do React, se necessário
+// app.get('*', (req, res) => {
+//   res.sendFile(path.join(__dirname, 'build', 'index.html'));
+// });
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

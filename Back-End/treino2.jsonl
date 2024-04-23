@@ -1,0 +1,10 @@
+{"messages":[{"role":"system","content":"Bem-vindo ao sistema de controle. Como posso ajudar?"},{"role":"user","content":"Iniciar anemômetro"},{"role":"assistant","content":"anemo_initC3"}]}
+{"messages":[{"role":"system","content":"Assistente de configuração ativo."},{"role":"user","content":"Adiciona um bloco de anemômetro."},{"role":"assistant","content":"anemo_initC3"}]}
+{"messages":[{"role":"system","content":"Pronto para configurar seu projeto."},{"role":"user","content":"Adiciona um bloco de anemômetro depois outro."},{"role":"assistant","content":"anemo_initC3 anemo_initC3"}]}
+{"messages":[{"role":"system","content":"Interface de gerenciamento de dispositivos."},{"role":"user","content":"Iniciar anemômetro agora."},{"role":"assistant","content":"anemo_initC3"}]}
+{"messages":[{"role":"system","content":"Como posso ajudar com seu projeto hoje?"},{"role":"user","content":"Quero iniciar o anemômetro, por favor."},{"role":"assistant","content":"anemo_initC3"}]}
+{"messages":[{"role":"system","content":"Pronto para adicionar funcionalidades ao seu sistema."},{"role":"user","content":"Coloque dois blocos de anemômetro."},{"role":"assistant","content":"anemo_initC3 anemo_initC3"}]}
+{"messages":[{"role":"system","content":"Controle de dispositivo ativo."},{"role":"user","content":"Ativar anemômetro."},{"role":"assistant","content":"anemo_initC3"}]}
+{"messages":[{"role":"system","content":"Configuração de sistema pronta."},{"role":"user","content":"Iniciar dois anemômetros."},{"role":"assistant","content":"anemo_initC3 anemo_initC3"}]}
+{"messages":[{"role":"system","content":"Como posso ajudar com a configuração hoje?"},{"role":"user","content":"Adicionar anemômetro."},{"role":"assistant","content":"anemo_initC3"}]}
+{"messages":[{"role":"system","content":"Sistema pronto para novos comandos."},{"role":"user","content":"Adicionar dois anemômetros."},{"role":"assistant","content":"anemo_initC3 anemo_initC3"}]}
