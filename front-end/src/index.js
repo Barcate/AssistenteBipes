@@ -3,11 +3,14 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { BlocklyDataProvider } from './contexto/BlocklyDataContext'; // Importa o provider do contexto
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <BlocklyDataProvider> {/* Adiciona o provider do contexto ao redor do App */}
+      <App />
+    </BlocklyDataProvider>
   </React.StrictMode>
 );
 

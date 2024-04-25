@@ -4,6 +4,7 @@ import assistantImage1 from './teste1.png';
 import assistantImage3 from './teste3.png';
 // import assistantImage2 from './teste2.png';
 import BlocklyComponent from './components/BlocklyComponent';
+import { useBlocklyData } from './contexto/BlocklyDataContext';
 import axios from 'axios';
 
 function App() {
@@ -19,7 +20,7 @@ function App() {
   const [textMessage2, setTextMessage2] = useState('');
   const [mediaRecorder2, setMediaRecorder2] = useState(null);
   const [isRecording2, setIsRecording2] = useState(false);
-  const [blockResponse, setBlockResponse] = useState('');
+  const { setBlockResponse } = useBlocklyData();
 
 
   const speak = () => {
@@ -58,15 +59,15 @@ function App() {
         setChatMessages(prevMessages => [...prevMessages, { type: 'audio', content: url, sent: true }]);
       } else {
         formData.append('messageContent', data.messageContent);
-        // Adicionar texto ao chat antes de enviar
+
         setChatMessages(prevMessages => [...prevMessages, { type: 'text', content: data.messageContent, sent: true }]);
       }
   
       const response = await axios.post('http://localhost:5000/message', formData, {
         headers: {
-          'Content-Type': 'multipart/form-data' // Isso é automático quando você usa FormData
+          'Content-Type': 'multipart/form-data' 
         },
-        responseType: 'blob' // Handling audio response
+        responseType: 'blob' 
       });
   
       const url = URL.createObjectURL(response.data);
@@ -134,10 +135,9 @@ function App() {
           'Content-Type': 'multipart/form-data'
         }
       });
-  
-      // Supondo que a resposta seja um texto e não um blob
+
       const responseText = await response.data;
-      setBlockResponse(responseText); // Atualiza a variável de estado com a resposta de texto
+      setBlockResponse(responseText);
       setChatMessages2(prevMessages => [...prevMessages, { type: 'text', content: responseText }]);
     } catch (error) {
       console.error('Error sending/receiving data from server:', error);
