@@ -98,7 +98,39 @@ app.post('/message', upload.single('audio'), async (req, res) => {
     res.status(500).send(error.message);
   }
 });
+app.post('/bloco', upload.single('audio'), async (req, res) => {
+  try {
+    let textToProcess;
 
+    if (req.file) {
+      try {
+        textToProcess = await convertAudioToText(req.file.buffer);
+      } catch (error) {
+        console.log('Audio transcription failed:', error);
+        const apologyAudio = await convertTextToSpeech("Por favor, seja mais claro.");
+        res.set('Content-Type', 'audio/mpeg');
+        return res.send(apologyAudio);
+      }
+    } else if (req.body.messageContent) {
+      textToProcess = req.body.messageContent;
+    } else {
+      return res.status(400).send("No text or audio message received");
+    }
+
+    const completion = await openai.chat.completions.create({
+      messages: [{ role: "system", content: "You are the HexaCodeAssistant" }, { role: "user", content: textToProcess }],
+      model: "ft:gpt-3.5-turbo-0125:pete:hexacode:9HaQnMQp",
+    });
+
+    const responseText = completion.choices[0].message.content;
+
+    res.send(responseText);
+    console.log("Transcribed text: " + textToProcess); // Log the transcribed text for debugging
+  } catch (error) {
+    console.error("Error calling AI:", error);
+    res.status(500).send(error.message);
+  }
+});
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);

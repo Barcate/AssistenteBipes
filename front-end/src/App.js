@@ -19,6 +19,8 @@ function App() {
   const [textMessage2, setTextMessage2] = useState('');
   const [mediaRecorder2, setMediaRecorder2] = useState(null);
   const [isRecording2, setIsRecording2] = useState(false);
+  const [blockResponse, setBlockResponse] = useState('');
+
 
   const speak = () => {
     const msg = new SpeechSynthesisUtterance('Eu sou o assistente virtual Bipes, o que você precisa?');
@@ -114,6 +116,66 @@ function App() {
       setIsRecordingFunc(false);
     }
   };
+  const sendToBlockServer = async (data) => {
+    try {
+      let formData = new FormData();
+      if (data.messageType === 'audio') {
+        formData.append('audio', data.messageContent, 'message.mp3');
+        const url = URL.createObjectURL(data.messageContent);
+        setChatMessages2(prevMessages => [...prevMessages, { type: 'audio', content: url, sent: true }]);
+      } else {
+        formData.append('messageContent', data.messageContent);
+        const responseText = await data.messageContent;
+        setChatMessages2(prevMessages => [...prevMessages, { type: 'text', content: responseText, sent: true }]);
+      }
+  
+      const response = await axios.post('http://localhost:5000/bloco', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      });
+  
+      // Supondo que a resposta seja um texto e não um blob
+      const responseText = await response.data;
+      setBlockResponse(responseText); // Atualiza a variável de estado com a resposta de texto
+      setChatMessages2(prevMessages => [...prevMessages, { type: 'text', content: responseText }]);
+    } catch (error) {
+      console.error('Error sending/receiving data from server:', error);
+    }
+  };
+  
+  const handleTextSubmit2 = (event, setTextMessageFunc, setChatMessagesFunc, textMessageVar) => {
+    event.preventDefault();
+    if (textMessageVar.trim()) {
+      sendToBlockServer({ messageType: 'text', messageContent: textMessageVar });
+      setTextMessageFunc('');
+    }
+  };
+  const handleAudioStart2 = async (event) => {
+    event.stopPropagation();
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      const recorder = new MediaRecorder(stream);
+      setMediaRecorder2(recorder);
+      recorder.start();
+      setIsRecording2(true);
+  
+      recorder.ondataavailable = (event) => {
+        const audioBlob = new Blob([event.data], { type: 'audio/wav' });
+        sendToBlockServer({ messageType: 'audio', messageContent: audioBlob }, setBlockResponse);
+        setIsRecording2(false);
+      };
+    } catch (error) {
+      console.error("Erro ao acessar o microfone", error);
+    }
+  };
+  const handleAudioStop2 = (event, mediaRecorderVar, setIsRecordingFunc) => {
+    event.stopPropagation();
+    if (mediaRecorderVar) {
+      mediaRecorderVar.stop();
+      setIsRecordingFunc(false);
+    }
+  };
 
   return (
     <div className="container">
@@ -165,7 +227,7 @@ function App() {
                   </div>
                 ))}
               </div>
-              <form onSubmit={(e) => handleTextSubmit(e, setTextMessage2, setChatMessages2, textMessage2, chatMessages2)}>
+              <form onSubmit={(e) => handleTextSubmit2(e, setTextMessage2, setChatMessages2, textMessage2, chatMessages2)}>
                 <input
                   type="text"
                   value={textMessage2}
@@ -175,9 +237,9 @@ function App() {
                 <button type="submit">Enviar</button>
                 </form>
               {isRecording2 ? (
-                <button onClick={(e) => handleAudioStop(e, mediaRecorder2, setIsRecording2)}>Parar gravação</button>
+                <button onClick={(e) => handleAudioStop2(e, mediaRecorder2, setIsRecording2)}>Parar gravação</button>
               ) : (
-                <button onClick={(e) => handleAudioStart(e, setIsRecording2, setMediaRecorder2, setChatMessages2, chatMessages2)}>Gravar áudio</button>
+                <button onClick={(e) => handleAudioStart2(e, setIsRecording2, setMediaRecorder2, setChatMessages2, chatMessages2)}>Gravar áudio</button>
               )}
             </div>
           )}
