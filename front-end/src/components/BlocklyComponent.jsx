@@ -11,6 +11,8 @@ const BlocklyComponent = () => {
     const workspace = useRef(null);
     const toolbox = `<xml xmlns="http://www.w3.org/1999/xhtml" style="display: none">
                         <block type="anemo_initC3"></block>
+                        <block type="lux_initC3"></block>
+                        <block type="Teste_Block"></block>
                         <!-- Outros blocos -->
                      </xml>`;
     const { blockResponse } = useBlocklyData();

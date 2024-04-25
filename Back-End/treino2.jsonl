@@ -1,10 +1,54 @@
-{"messages":[{"role":"system","content":"Bem-vindo ao sistema de controle. Como posso ajudar?"},{"role":"user","content":"Iniciar anemômetro"},{"role":"assistant","content":"anemo_initC3"}]}
-{"messages":[{"role":"system","content":"Assistente de configuração ativo."},{"role":"user","content":"Adiciona um bloco de anemômetro."},{"role":"assistant","content":"anemo_initC3"}]}
-{"messages":[{"role":"system","content":"Pronto para configurar seu projeto."},{"role":"user","content":"Adiciona um bloco de anemômetro depois outro."},{"role":"assistant","content":"anemo_initC3 anemo_initC3"}]}
-{"messages":[{"role":"system","content":"Interface de gerenciamento de dispositivos."},{"role":"user","content":"Iniciar anemômetro agora."},{"role":"assistant","content":"anemo_initC3"}]}
-{"messages":[{"role":"system","content":"Como posso ajudar com seu projeto hoje?"},{"role":"user","content":"Quero iniciar o anemômetro, por favor."},{"role":"assistant","content":"anemo_initC3"}]}
-{"messages":[{"role":"system","content":"Pronto para adicionar funcionalidades ao seu sistema."},{"role":"user","content":"Coloque dois blocos de anemômetro."},{"role":"assistant","content":"anemo_initC3 anemo_initC3"}]}
-{"messages":[{"role":"system","content":"Controle de dispositivo ativo."},{"role":"user","content":"Ativar anemômetro."},{"role":"assistant","content":"anemo_initC3"}]}
-{"messages":[{"role":"system","content":"Configuração de sistema pronta."},{"role":"user","content":"Iniciar dois anemômetros."},{"role":"assistant","content":"anemo_initC3 anemo_initC3"}]}
-{"messages":[{"role":"system","content":"Como posso ajudar com a configuração hoje?"},{"role":"user","content":"Adicionar anemômetro."},{"role":"assistant","content":"anemo_initC3"}]}
-{"messages":[{"role":"system","content":"Sistema pronto para novos comandos."},{"role":"user","content":"Adicionar dois anemômetros."},{"role":"assistant","content":"anemo_initC3 anemo_initC3"}]}
+{"messages":[{"role":"system","content":"Como posso ajudar com seus blocos Blockly?"},{"role":"user","content":"faça o bloco A"},{"role":"assistant","content":"anemo_initC3"}]}
+{"messages":[{"role":"system","content":"Como posso ajudar com seus blocos Blockly?"},{"role":"user","content":"crie o bloco A"},{"role":"assistant","content":"anemo_initC3"}]}
+{"messages":[{"role":"system","content":"Como posso ajudar com seus blocos Blockly?"},{"role":"user","content":"inicie o bloco A"},{"role":"assistant","content":"anemo_initC3"}]}
+{"messages":[{"role":"system","content":"Como posso ajudar com seus blocos Blockly?"},{"role":"user","content":"monte o bloco A"},{"role":"assistant","content":"anemo_initC3"}]}
+{"messages":[{"role":"system","content":"Como posso ajudar com seus blocos Blockly?"},{"role":"user","content":"insira o bloco A"},{"role":"assistant","content":"anemo_initC3"}]}
+{"messages":[{"role":"system","content":"Como posso ajudar com seus blocos Blockly?"},{"role":"user","content":"organize o bloco A"},{"role":"assistant","content":"anemo_initC3"}]}
+{"messages":[{"role":"system","content":"Como posso ajudar com seus blocos Blockly?"},{"role":"user","content":"coloque o bloco A na área de trabalho"},{"role":"assistant","content":"anemo_initC3"}]}
+{"messages":[{"role":"system","content":"Como posso ajudar com seus blocos Blockly?"},{"role":"user","content":"adicionar bloco A"},{"role":"assistant","content":"anemo_initC3"}]}
+{"messages":[{"role":"system","content":"Como posso ajudar com seus blocos Blockly?"},{"role":"user","content":"ativar o bloco A"},{"role":"assistant","content":"anemo_initC3"}]}
+{"messages":[{"role":"system","content":"Como posso ajudar com seus blocos Blockly?"},{"role":"user","content":"implemente o bloco A"},{"role":"assistant","content":"anemo_initC3"}]}
+{"messages":[{"role":"system","content":"Como posso ajudar com seus blocos Blockly?"},{"role":"user","content":"faça o bloco B"},{"role":"assistant","content":"lux_InitC3"}]}
+{"messages":[{"role":"system","content":"Como posso ajudar com seus blocos Blockly?"},{"role":"user","content":"crie o bloco B"},{"role":"assistant","content":"lux_InitC3"}]}
+{"messages":[{"role":"system","content":"Como posso ajudar com seus blocos Blockly?"},{"role":"user","content":"inicie o bloco B"},{"role":"assistant","content":"lux_InitC3"}]}
+{"messages":[{"role":"system","content":"Como posso ajudar com seus blocos Blockly?"},{"role":"user","content":"monte o bloco B"},{"role":"assistant","content":"lux_InitC3"}]}
+{"messages":[{"role":"system","content":"Como posso ajudar com seus blocos Blockly?"},{"role":"user","content":"insira o bloco B"},{"role":"assistant","content":"lux_InitC3"}]}
+{"messages":[{"role":"system","content":"Como posso ajudar com seus blocos Blockly?"},{"role":"user","content":"organize o bloco B"},{"role":"assistant","content":"lux_InitC3"}]}
+{"messages":[{"role":"system","content":"Como posso ajudar com seus blocos Blockly?"},{"role":"user","content":"coloque o bloco B na área de trabalho"},{"role":"assistant","content":"lux_InitC3"}]}
+{"messages":[{"role":"system","content":"Como posso ajudar com seus blocos Blockly?"},{"role":"user","content":"adicionar bloco B"},{"role":"assistant","content":"lux_InitC3"}]}
+{"messages":[{"role":"system","content":"Como posso ajudar com seus blocos Blockly?"},{"role":"user","content":"ativar o bloco B"},{"role":"assistant","content":"lux_InitC3"}]}
+{"messages":[{"role":"system","content":"Como posso ajudar com seus blocos Blockly?"},{"role":"user","content":"implemente o bloco B"},{"role":"assistant","content":"lux_InitC3"}]}
+{"messages":[{"role":"system","content":"Como posso ajudar com seus blocos Blockly?"},{"role":"user","content":"configure o bloco B"},{"role":"assistant","content":"lux_InitC3"}]}
+{"messages":[{"role":"system","content":"Como posso ajudar com seus blocos Blockly?"},{"role":"user","content":"montar o bloco B no espaço de trabalho"},{"role":"assistant","content":"lux_InitC3"}]}
+{"messages":[{"role":"system","content":"Como posso ajudar com seus blocos Blockly?"},{"role":"user","content":"defina o bloco B para início"},{"role":"assistant","content":"lux_InitC3"}]}
+{"messages":[{"role":"system","content":"Como posso ajudar com seus blocos Blockly?"},{"role":"user","content":"execute o bloco B"},{"role":"assistant","content":"lux_InitC3"}]}
+{"messages":[{"role":"system","content":"Como posso ajudar com seus blocos Blockly?"},{"role":"user","content":"estabeleça o bloco B"},{"role":"assistant","content":"lux_InitC3"}]}
+{"messages":[{"role":"system","content":"Como posso ajudar com seus blocos Blockly?"},{"role":"user","content":"faça o bloco C"},{"role":"assistant","content":"Teste_Block"}]}
+{"messages":[{"role":"system","content":"Como posso ajudar com seus blocos Blockly?"},{"role":"user","content":"crie o bloco C"},{"role":"assistant","content":"Teste_Block"}]}
+{"messages":[{"role":"system","content":"Como posso ajudar com seus blocos Blockly?"},{"role":"user","content":"inicie o bloco C"},{"role":"assistant","content":"Teste_Block"}]}
+{"messages":[{"role":"system","content":"Como posso ajudar com seus blocos Blockly?"},{"role":"user","content":"monte o bloco C"},{"role":"assistant","content":"Teste_Block"}]}
+{"messages":[{"role":"system","content":"Como posso ajudar com seus blocos Blockly?"},{"role":"user","content":"insira o bloco C"},{"role":"assistant","content":"Teste_Block"}]}
+{"messages":[{"role":"system","content":"Como posso ajudar com seus blocos Blockly?"},{"role":"user","content":"organize o bloco C"},{"role":"assistant","content":"Teste_Block"}]}
+{"messages":[{"role":"system","content":"Como posso ajudar com seus blocos Blockly?"},{"role":"user","content":"coloque o bloco C na área de trabalho"},{"role":"assistant","content":"Teste_Block"}]}
+{"messages":[{"role":"system","content":"Como posso ajudar com seus blocos Blockly?"},{"role":"user","content":"adicionar bloco C"},{"role":"assistant","content":"Teste_Block"}]}
+{"messages":[{"role":"system","content":"Como posso ajudar com seus blocos Blockly?"},{"role":"user","content":"ativar o bloco C"},{"role":"assistant","content":"Teste_Block"}]}
+{"messages":[{"role":"system","content":"Como posso ajudar com seus blocos Blockly?"},{"role":"user","content":"implemente o bloco C"},{"role":"assistant","content":"Teste_Block"}]}
+{"messages":[{"role":"system","content":"Como posso ajudar com seus blocos Blockly?"},{"role":"user","content":"faça os blocos A e B"},{"role":"assistant","content":"anemo_initC3 lux_InitC3"}]}
+{"messages":[{"role":"system","content":"Como posso ajudar com seus blocos Blockly?"},{"role":"user","content":"crie os blocos B e C"},{"role":"assistant","content":"lux_InitC3 Teste_Block"}]}
+{"messages":[{"role":"system","content":"Como posso ajudar com seus blocos Blockly?"},{"role":"user","content":"monte os blocos A, B e C"},{"role":"assistant","content":"anemo_initC3 lux_InitC3 Teste_Block"}]}
+{"messages":[{"role":"system","content":"Como posso ajudar com seus blocos Blockly?"},{"role":"user","content":"configure os blocos A e C"},{"role":"assistant","content":"anemo_initC3 Teste_Block"}]}
+{"messages":[{"role":"system","content":"Como posso ajudar com seus blocos Blockly?"},{"role":"user","content":"configure os blocos A e C juntos"},{"role":"assistant","content":"anemo_initC3 Teste_Block"}]}
+{"messages":[{"role":"system","content":"Como posso ajudar com seus blocos Blockly?"},{"role":"user","content":"inicie os blocos B e C simultaneamente"},{"role":"assistant","content":"lux_InitC3 Teste_Block"}]}
+{"messages":[{"role":"system","content":"Como posso ajudar com seus blocos Blockly?"},{"role":"user","content":"organize os blocos A e B na sequência"},{"role":"assistant","content":"anemo_initC3 lux_InitC3"}]}
+{"messages":[{"role":"system","content":"Como posso ajudar com seus blocos Blockly?"},{"role":"user","content":"crie uma sequência com os blocos B, C e depois A"},{"role":"assistant","content":"lux_InitC3 Teste_Block anemo_initC3"}]}
+{"messages":[{"role":"system","content":"Como posso ajudar com seus blocos Blockly?"},{"role":"user","content":"monte os blocos C, A e B em ordem"},{"role":"assistant","content":"Teste_Block anemo_initC3 lux_InitC3"}]}
+{"messages":[{"role":"system","content":"Como posso ajudar com seus blocos Blockly?"},{"role":"user","content":"faça uma combinação dos blocos B e A"},{"role":"assistant","content":"lux_InitC3 anemo_initC3"}]}
+{"messages":[{"role":"system","content":"Como posso ajudar com seus blocos Blockly?"},{"role":"user","content":"organize uma sequência com os blocos A, C, e B"},{"role":"assistant","content":"anemo_initC3 Teste_Block lux_InitC3"}]}
+{"messages":[{"role":"system","content":"Como posso ajudar com seus blocos Blockly?"},{"role":"user","content":"crie uma linha com os blocos C e B"},{"role":"assistant","content":"Teste_Block lux_InitC3"}]}
+{"messages":[{"role":"system","content":"Como posso ajudar com seus blocos Blockly?"},{"role":"user","content":"insira os blocos A, B e C em ordem"},{"role":"assistant","content":"anemo_initC3 lux_InitC3 Teste_Block"}]}
+{"messages":[{"role":"system","content":"Como posso ajudar com seus blocos Blockly?"},{"role":"user","content":"ativação completa dos blocos B, A e C"},{"role":"assistant","content":"lux_InitC3 anemo_initC3 Teste_Block"}]}
+{"messages":[{"role":"system","content":"Como posso ajudar com seus blocos Blockly?"},{"role":"user","content":"inicie uma cadeia com os blocos A e B, depois C"},{"role":"assistant","content":"anemo_initC3 lux_InitC3 Teste_Block"}]}
+{"messages":[{"role":"system","content":"Como posso ajudar com seus blocos Blockly?"},{"role":"user","content":"defina os blocos C e A para execução sequencial"},{"role":"assistant","content":"Teste_Block anemo_initC3"}]}
+{"messages":[{"role":"system","content":"Como posso ajudar com seus blocos Blockly?"},{"role":"user","content":"estabeleça os blocos A, C e depois B"},{"role":"assistant","content":"anemo_initC3 Teste_Block lux_InitC3"}]}
+{"messages":[{"role":"system","content":"Como posso ajudar com seus blocos Blockly?"},{"role":"user","content":"faça a montagem dos blocos B, depois A e C"},{"role":"assistant","content":"lux_InitC3 anemo_initC3 Teste_Block"}]}
+{"messages":[{"role":"system","content":"Como posso ajudar com seus blocos Blockly?"},{"role":"user","content":"configure todos os blocos A, B e C em uma fila"},{"role":"assistant","content":"anemo_initC3 lux_InitC3 Teste_Block"}]}
