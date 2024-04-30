@@ -118,8 +118,8 @@ app.post('/bloco', upload.single('audio'), async (req, res) => {
     }
 
     const completion = await openai.chat.completions.create({
-      messages: [{ role: "system", content: "Você é o HexaCodeAssistant" }, { role: "user", content: textToProcess }],
-      model: "ft:gpt-3.5-turbo-0125:pete:bipestaradao:9Hyy2VZe",
+      messages: [{ role: "system", content: "Retorne apenas o que foi pedido, evite conversas" }, { role: "user", content: textToProcess }],
+      model: "ft:gpt-3.5-turbo-0125:pete:teste2:9ILBJVQR",
     });
 
     const responseText = completion.choices[0].message.content;

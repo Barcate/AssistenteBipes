@@ -4,7 +4,7 @@ Blockly.Blocks['anemo_initC3'] = {
   init: function(){
     this.appendDummyInput()
         .appendField(new Blockly.FieldImage("https://cdn-icons-png.flaticon.com/512/1113/1113753.png", 56, 50, "*"))
-        .appendField("                       A");
+        .appendField("Anemometro");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(330);
@@ -12,7 +12,7 @@ Blockly.Blocks['anemo_initC3'] = {
     this.setHelpUrl("");
   }
 };
-Blockly.Blocks['lux_initC3'] = {
+Blockly.Blocks['lux_InitC3'] = {
   init: function(){
     this.appendDummyInput()
         .appendField(new Blockly.FieldImage(
@@ -20,7 +20,7 @@ Blockly.Blocks['lux_initC3'] = {
                      47,
                      50,
                      "*"))
-        .appendField("                       B");
+        .appendField("Glauber");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(255,0,0);
@@ -34,7 +34,7 @@ Blockly.Blocks['Teste_Block'] = {
                      47,
                      50,
                      "*"))
-        .appendField("                       C");
+        .appendField("Teste");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(100,0,0);

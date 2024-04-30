@@ -11,7 +11,7 @@ const BlocklyComponent = () => {
     const workspace = useRef(null);
     const toolbox = `<xml xmlns="http://www.w3.org/1999/xhtml" style="display: none">
                         <block type="anemo_initC3"></block>
-                        <block type="lux_initC3"></block>
+                        <block type="lux_InitC3"></block>
                         <block type="Teste_Block"></block>
                         <!-- Outros blocos -->
                      </xml>`;
@@ -52,24 +52,29 @@ const BlocklyComponent = () => {
     function processBlockResponse(response) {
         const blockTypes = response.split(" ");
         let lastBlock = null;
+        let yPosition = 80;  // Initial y position for blocks
 
         blockTypes.forEach(type => {
             if (Blockly.Blocks[type]) {
+                // Forçar a criação de um novo bloco sem verificar o ID
                 const block = workspace.current.newBlock(type);
                 block.initSvg();
                 block.render();
 
                 if (lastBlock) {
-                    
-                    if (lastBlock.nextConnection && block.previousConnection) {
+                    // Try to connect this block to the previous one
+                    let connection = lastBlock.nextConnection;
+                    if (connection && block.previousConnection) {
                         try {
-                            lastBlock.nextConnection.connect(block.previousConnection);
+                            connection.connect(block.previousConnection);
                         } catch (e) {
                             console.error("Failed to connect blocks:", e);
+                            block.moveBy(120, yPosition);
+                            yPosition += 40;
                         }
                     }
                 } else {
-                    
+                    // Position the first block
                     block.moveBy(120, 80);
                 }
 
@@ -78,6 +83,9 @@ const BlocklyComponent = () => {
                 console.error("Block type not defined:", type);
             }
         });
+
+        // Garantir que o workspace seja atualizado
+        workspace.current.render();
     }
 
     return <div ref={blocklyDiv} style={{ height: '480px', width: '600px' }} />;

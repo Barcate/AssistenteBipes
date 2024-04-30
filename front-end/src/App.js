@@ -137,7 +137,10 @@ function App() {
       });
 
       const responseText = await response.data;
-      setBlockResponse(responseText);
+      setBlockResponse(''); // Clear the response
+      setTimeout(() => {
+        setBlockResponse(responseText); // Set new response
+      }, 0);
       setChatMessages2(prevMessages => [...prevMessages, { type: 'text', content: responseText }]);
     } catch (error) {
       console.error('Error sending/receiving data from server:', error);
